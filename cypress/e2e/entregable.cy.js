@@ -41,12 +41,11 @@ import { ShoppingCartPage } from '../support/pages/ShoppingCartPage';
       productsPage.selectProduct(products.products.product2.whiteShoes);
       productsPage.clickGoShoppingCar();
       shoppingCartPage.returnProduct(products.products.product1.blackTshirt).should('have.text', products.products.product1.blackTshirt);
-      shoppingCartPage.returnProductPrice(products.products.product1.price).should('exist');
+      shoppingCartPage.returnProductPrice(products.products.product1.blackTshirt).should('have.text', '$'+products.products.product1.price);
       shoppingCartPage.returnProduct(products.products.product2.whiteShoes).should('have.text', products.products.product2.whiteShoes);
-      shoppingCartPage.returnProductPrice(products.products.product2.price).should('exist');
+      shoppingCartPage.returnProductPrice(products.products.product2.whiteShoes).should('have.text', '$'+products.products.product2.price);
       shoppingCartPage.clickShowTotalPrice();
-      cy.get('#price').invoke('text').then(texto => {
-        assert.equal(texto, (products.products.product1.price + products.products.product2.price))
+      cy.get('#price').invoke('text').then(texto => { assert.equal(texto, (products.products.product1.price + products.products.product2.price))
       });
 
     });

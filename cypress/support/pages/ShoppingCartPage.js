@@ -8,8 +8,9 @@ export class ShoppingCartPage {
         return cy.contains(products);
     };
 
-    returnProductPrice(products) {
-        return cy.get(`[name="${products}"]`);
+    returnProductPrice(productsName) {
+//        cy.log("LOGUEA ----" + cy.contains(productsName).siblings('#productPrice'));
+        return cy.contains(productsName).siblings('#productPrice');
     };
 
     clickShowTotalPrice() {
